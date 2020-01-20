@@ -28,6 +28,7 @@ end
 t.SLOT_MAJOR = 115
 t.SLOT_MINOR1 = 116
 t.SLOT_MINOR2 = 117
+t.SLOT_MINOR3 = 119
 
 t.aui = C_AzeriteEssence
 
@@ -68,7 +69,7 @@ end
 
 t.get_preset_string = function(name, preset)
 
-	names = {major="<none>", minor1="<none>", minor2="<none>"}
+	names = {major="<none>", minor1="<none>", minor2="<none>", minor3="<none>"}
 
 	if preset.major then
 		names.major = t.aui.GetEssenceInfo(preset.major).name or "<none>"
@@ -79,8 +80,11 @@ t.get_preset_string = function(name, preset)
 	if preset.minor2 then
 		names.minor2 = t.aui.GetEssenceInfo(preset.minor2).name or "<none>"
 	end
+  if preset.minor3 then
+		names.minor3 = t.aui.GetEssenceInfo(preset.minor3).name or "<none>"
+	end
 
-	return "\"|cffffff33"..name.."|r\" ("..names.major.." / "..names.minor1.." / "..names.minor2..")"
+	return "\"|cffffff33"..name.."|r\" ("..names.major.." / "..names.minor1.." / "..names.minor2.." / "..names.minor3..")"
 
 	
 end
@@ -100,6 +104,9 @@ t.load_preset = function(name)
       if preset.minor2 then
          t.aui.ActivateEssence(preset.minor2, t.SLOT_MINOR2)
       end
+      if preset.minor3 then
+         t.aui.ActivateEssence(preset.minor3, t.SLOT_MINOR3)
+      end
 
       t.print("Loaded "..t.get_preset_string(name, preset))
    end
@@ -109,9 +116,10 @@ end
 t.save_preset = function(name)
    major = t.aui.GetMilestoneEssence(t.SLOT_MAJOR)
    minor1 = t.aui.GetMilestoneEssence(t.SLOT_MINOR1)
-   minor2 = t.aui.GetMilestoneEssence(t.SLOT_MINOR2) 
+   minor2 = t.aui.GetMilestoneEssence(t.SLOT_MINOR2)
+   minor3 = t.aui.GetMilestoneEssence(t.SLOT_MINOR3)    
    
-   preset = {major=major,minor1=minor1,minor2=minor2}
+   preset = {major=major,minor1=minor1,minor2=minor2,minor3=minor3}
    
    
    t.presets[name] = preset

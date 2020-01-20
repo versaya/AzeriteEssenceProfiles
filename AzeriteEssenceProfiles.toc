@@ -1,7 +1,7 @@
-## Interface: 80200
+## Interface: 80300
 ## Title: Azerite Essence Profiles
 ## Author: Versaya-Auchindoun
-## Version: 0.1
+## Version: 0.2
 ## SavedVariablesPerCharacter: AzeriteEssenceProfiles
 ## Notes: Add commands to quickly save and load azerite essence loadouts.
 
